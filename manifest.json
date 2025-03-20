@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "CUIMS Captcha Solver",
+  "version": "1.0",
+  "description": "Automatically solves CAPTCHA on the CUIMS page using Tesseract.js locally.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://students.cuchd.in/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://students.cuchd.in/*"],
+      "js": ["tesseract.min.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  }
+}
